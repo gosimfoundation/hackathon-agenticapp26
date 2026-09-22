@@ -1,4 +1,4 @@
-> **Website repository:** `gosimfoundation/agenticapp26` · [Maintenance and publishing](MAINTAINING.md) · [Live site](https://create.gosim.org/agenticapp26/)
+> **Website repository:** `gosimfoundation/hackathon-agenticapp26` · [Maintenance and publishing](MAINTAINING.md) · [Live site](https://create.gosim.org/agenticapp26/)
 
 # Agent2App Hackathon 2026
 
