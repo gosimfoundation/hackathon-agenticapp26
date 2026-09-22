@@ -12,7 +12,7 @@ npm run dev
 npm run build
 ```
 
-The root build assembles the output into `_site/agenticapp26/`. `VITE_BASE_PATH` can override the default base path.
+The independent release workflow packages this site. The shared publisher in `gosimfoundation/hackathon` assembles the successful release into `_site/agenticapp26/`. `VITE_BASE_PATH` can override the default base path. See [MAINTAINING.md](MAINTAINING.md) for publishing and rollback.
 
 ## Content and visual direction
 
