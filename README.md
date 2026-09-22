@@ -1,3 +1,5 @@
+> **Website repository:** `gosimfoundation/agenticapp26` · [Maintenance and publishing](MAINTAINING.md) · [Live site](https://create.gosim.org/agenticapp26/)
+
 # Agent2App Hackathon 2026
 
 Independent Vue + TypeScript + Vite event site, served at `/agenticapp26/` alongside Factory26 and Survey26. No shared event database or authentication is configured.
