@@ -22,7 +22,7 @@ const publishingUrl = `${hubUrl}/blob/97c2a1fd9aa49a6b87586f228e070e0c16b1067b/d
       <li>
         <span class="submission-step" aria-hidden="true">02</span>
         <h3>{{ t('实际运行验收') }}</h3>
-        <p>{{ t('在注明版本的 OctoSense 或 robrix2 环境中启动作品，演示真实输入、授权、Agent 操作与结果核验，并提交复现步骤和运行证据。') }}</p>
+        <p>{{ t('在注明版本的 OctoSense 或 Rinx 环境中启动作品，演示真实输入、授权、Agent 操作与结果核验，并提交复现步骤和运行证据。') }}</p>
       </li>
       <li>
         <span class="submission-step" aria-hidden="true">03</span>
@@ -54,7 +54,7 @@ const publishingUrl = `${hubUrl}/blob/97c2a1fd9aa49a6b87586f228e070e0c16b1067b/d
 
     <aside class="submission-status" aria-labelledby="hub-status-title">
       <h3 id="hub-status-title">{{ t('当前可用范围') }}</h3>
-      <p>{{ t('可参考 Hub 规范准备卡片包并进行本地预检。robrix2 的通用商店接入与自动提交入口仍在建设，开放后将公布使用方式；现阶段各轮评审仍以公开源码仓库和可运行作品为准，无需等待上架。') }}</p>
+      <p>{{ t('可参考 Hub 规范准备卡片包并进行本地预检。Rinx 的通用商店接入与自动提交入口仍在建设，开放后将公布使用方式；现阶段各轮评审仍以公开源码仓库和可运行作品为准，无需等待上架。') }}</p>
     </aside>
     <div class="submission-links">
       <a class="inline-link" :href="hubUrl" target="_blank" rel="noopener noreferrer">{{ t('查看 OctoSense App Hub ↗') }}</a>

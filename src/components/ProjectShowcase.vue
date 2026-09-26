@@ -20,10 +20,10 @@ const serviceShots = [
 const serviceShot = (slug: string) => asset(`octosense-${slug}-${locale.value === 'en' ? 'en' : 'zh'}.webp`)
 const serviceUrl = (slug: string) => `https://octosense.org${locale.value === 'en' ? '' : '/cn'}/experience/${slug}/`
 const miniappShots = [
-  { file: 'robrix-miniapp-app-details.png', title: '打开原生小程序', caption: '从“发现”或聊天入口打开文章编辑器，了解用途后继续。', alt: 'robrix2 原生文章编辑器的应用详情页' },
-  { file: 'robrix-miniapp-account-consent.png', title: '每位使用者独立授权', caption: '用自己的账号确认本地草稿与发送权限，分享应用不传递授权。', alt: '文章编辑器展示当前测试账号和本次使用的权限' },
-  { file: 'robrix-miniapp-native-preview.png', title: '先预览，再确认发送', caption: 'Markdown 内容由原生界面呈现，选择聊天并确认后发送。', alt: '文章编辑器原生预览中的标题、段落和列表' },
-  { file: 'robrix-miniapp-received-card.png', title: '让应用进入会话', caption: '聊天中可以收到文章与小程序卡片，接收者可继续打开应用。', alt: 'robrix2 测试会话中收到的文章和文章编辑器小程序卡片' },
+  { file: 'rinx-miniapp-app-details.png', title: '打开原生小程序', caption: '从“发现”或聊天入口打开文章编辑器，了解用途后继续。', alt: 'Rinx 原生文章编辑器的应用详情页' },
+  { file: 'rinx-miniapp-account-consent.png', title: '每位使用者独立授权', caption: '用自己的账号确认本地草稿与发送权限，分享应用不传递授权。', alt: '文章编辑器展示当前测试账号和本次使用的权限' },
+  { file: 'rinx-miniapp-native-preview.png', title: '先预览，再确认发送', caption: 'Markdown 内容由原生界面呈现，选择聊天并确认后发送。', alt: '文章编辑器原生预览中的标题、段落和列表' },
+  { file: 'rinx-miniapp-received-card.png', title: '让应用进入会话', caption: '聊天中可以收到文章与小程序卡片，接收者可继续打开应用。', alt: 'Rinx 测试会话中收到的文章和文章编辑器小程序卡片' },
 ]
 </script>
 
@@ -32,7 +32,7 @@ const miniappShots = [
     <div class="section-heading wide">
       <p class="eyebrow">{{ t('IN ACTION / 实机预览') }}</p>
       <h2 id="showcase-title">{{ t('先看见应用，再开始创造。') }}</h2>
-      <p>{{ t('先看 robrix2 中的原生小程序流程，再探索 OctoSense 桌面、Omarchy 与应用场景。小程序画面来自仓库内的原生测试记录，服务卡片使用示例数据。') }}</p>
+      <p>{{ t('先看 Rinx 中的原生小程序流程，再探索 OctoSense 桌面、Omarchy 与应用场景。小程序画面来自仓库内的原生测试记录，服务卡片使用示例数据。') }}</p>
     </div>
 
     <div id="miniapp-showcase" class="miniapp-preview-heading">
@@ -115,7 +115,7 @@ const miniappShots = [
       </figure>
     </div>
 
-    <p class="showcase-footnote">{{ t('原生截图：robrix2 2026.09.21；桌面与参考卡片 2026.09.12。保留原始测试画面。') }}</p>
+    <p class="showcase-footnote">{{ t('原生截图：Rinx 2026.09.21；桌面与参考卡片 2026.09.12。保留原始测试画面。') }}</p>
   </section>
 </template>
 

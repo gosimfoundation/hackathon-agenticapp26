@@ -1,12 +1,12 @@
 # 作品提交与 OctoSense App Hub
 
-本届以 OctoSense 为核心，以 robrix2 为主要开发基线。作品交付分为提交与基础预检、实际运行验收、评委评奖三个环节。赛程和提交截止时间沿用 [赛事赛程](competition-schedule.md)；本指南不新增赛段。
+本届以 OctoSense 为核心，以 Rinx 为主要开发基线。作品交付分为提交与基础预检、实际运行验收、评委评奖三个环节。赛程和提交截止时间沿用 [赛事赛程](competition-schedule.md)；本指南不新增赛段。
 
 ## 当前使用方式
 
 [OctoSense App Hub](https://github.com/OctoSense-org/OctoSense-App-Hub) 已提供卡片包规范、准入检查 CLI、签名应用目录与商店模块。可参考规范准备包并在本地预检。
 
-截至 2026-09-21，robrix2 的通用目录与包安装尚未接通，自动提交入口仍在建设。现阶段各轮评审以公开源码仓库和可运行作品为准，无需等待 Hub 上架。后续入口和适用宿主版本开放后，由赛事方公布使用方式。
+截至 2026-09-21，Rinx 的通用目录与包安装尚未接通，自动提交入口仍在建设。现阶段各轮评审以公开源码仓库和可运行作品为准，无需等待 Hub 上架。后续入口和适用宿主版本开放后，由赛事方公布使用方式。
 
 ## 所有作品需要的材料
 
@@ -26,7 +26,7 @@
 | 原生宿主扩展 | 提交含扩展的可构建宿主版本、源码提交号、支持平台与运行说明 |
 | OctoSense ROM 扩展 | 在可运行应用基础上附系统改动、构建/安装与复现说明，以及效果前后对照 |
 
-现有 robrix2 内置编辑器不是任意 Hub 包的安装入口，不能仅提交 `.card` 文件并假设宿主会加载。具体基线见 [robrix2 小程序指南](robrix2-miniapps.md)。
+现有 Rinx 内置编辑器不是任意 Hub 包的安装入口，不能仅提交 `.card` 文件并假设宿主会加载。具体基线见 [Rinx 小程序指南](rinx-miniapps.md)。
 
 ## Hub 基础预检
 
@@ -55,5 +55,5 @@ hub scan my-app --packet review.json
 ## 核查依据
 
 - App Hub 核查版本：[97c2a1fd](https://github.com/OctoSense-org/OctoSense-App-Hub/tree/97c2a1fd9aa49a6b87586f228e070e0c16b1067b)。
-- robrix2 集成状态：[ADR 0002](https://github.com/OctoSense-org/robrix2/blob/05daf9bdb05fafc6d8f04dcb312a35f1d46a661e/docs/adr/0002-octoscript-mini-app-authority.md)。
+- Rinx 集成状态：[ADR 0002](https://github.com/hagency-org/Rinx/blob/05daf9bdb05fafc6d8f04dcb312a35f1d46a661e/docs/adr/0002-octoscript-mini-app-authority.md)。
 - 更详细的边界以锁定版本的官方文档与实际运行结果为准。

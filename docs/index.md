@@ -17,6 +17,6 @@ Agentic App 黑客松开课课程 · 2026 年 9 月 26 日 · 共 4 小时
 
 讲师从 [演示与课前准备](courses/2026-09-26/demo-runbook.md) 开始，结合 [源码依据与整合路线](courses/2026-09-26/integration-and-sources.md) 核对课堂环境。最新源码路径已经检查，GUI 组合的实机预演状态以准备手册为准。
 
-比赛安排见 [完整培训安排](curriculum.md)、[赛程与提交要求](competition-schedule.md) 和 [robrix2 小程序基线](robrix2-miniapps.md)。
+比赛安排见 [完整培训安排](curriculum.md)、[赛程与提交要求](competition-schedule.md) 和 [Rinx 小程序基线](rinx-miniapps.md)。
 
 左侧目录用于切换章节，顶栏提供搜索、主题切换和整书打印。课程讲稿与练习继续在原始 Markdown 文件中维护。
