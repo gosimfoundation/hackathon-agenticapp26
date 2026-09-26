@@ -19,4 +19,6 @@ Agentic App 黑客松开课课程 · 2026 年 9 月 26 日 · 共 4 小时
 
 比赛安排见 [完整培训安排](curriculum.md)、[赛程与提交要求](competition-schedule.md) 和 [Rinx 小程序基线](rinx-miniapps.md)。
 
+开课当天的实战演示见 [用 OctoLoop 调研比赛并做一个参赛应用](demo/2026-09-26/README.md),其中汇总了 [本届全部相关项目与仓库链接](demo/2026-09-26/projects.md)。
+
 左侧目录用于切换章节，顶栏提供搜索、主题切换和整书打印。课程讲稿与练习继续在原始 Markdown 文件中维护。

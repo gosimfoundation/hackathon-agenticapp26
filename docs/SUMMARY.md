@@ -19,3 +19,12 @@
 - [完整培训安排](curriculum.md)
 - [赛程与提交要求](competition-schedule.md)
 - [Rinx 小程序基线](rinx-miniapps.md)
+
+# 实战演示 · 9/26
+
+- [用 OctoLoop 调研比赛并做一个参赛应用](demo/2026-09-26/README.md)
+  - [相关项目与仓库](demo/2026-09-26/projects.md)
+  - [OctoLoop 实战过程记录](demo/2026-09-26/process.md)
+  - [OctoSense 与 octos 集成](demo/2026-09-26/octosense-octos.md)
+  - [Octoscript 与卡片生成流水线](demo/2026-09-26/octoscript-pipeline.md)
+  - [行程守护设计蓝图](demo/2026-09-26/octo-weather-guardian.md)
