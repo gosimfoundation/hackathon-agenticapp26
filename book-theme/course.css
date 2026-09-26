@@ -1,0 +1,48 @@
+:root {
+    --content-max-width: 960px;
+}
+
+.content {
+    line-height: 1.85;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Microsoft YaHei", sans-serif;
+}
+
+.content h1,
+.content h2,
+.content h3 {
+    line-height: 1.45;
+}
+
+.content table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 1.5em 0;
+}
+
+.content table td,
+.content table th {
+    padding: 0.65em 0.85em;
+}
+
+.content pre {
+    line-height: 1.65;
+}
+
+.content .mermaid {
+    overflow-x: auto;
+    padding: 1em 0;
+}
+
+@media print {
+    .content table {
+        display: table;
+        width: 100%;
+    }
+
+    .content pre {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+    }
+}

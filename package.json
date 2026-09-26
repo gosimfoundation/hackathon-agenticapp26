@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "course:build": "mdbook build",
+    "course:dev": "mdbook serve --hostname 127.0.0.1 --port 3206"
   },
   "dependencies": {
     "vue": "^3.5.40"
