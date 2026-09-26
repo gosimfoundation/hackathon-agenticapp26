@@ -14,6 +14,28 @@ npm run build
 
 The independent release workflow packages this site. The shared publisher in `gosimfoundation/hackathon` assembles the successful release into `_site/agenticapp26/`. `VITE_BASE_PATH` can override the default base path. See [MAINTAINING.md](MAINTAINING.md) for publishing and rollback.
 
+## 课程书 · mdBook
+
+四小时课程通过 mdBook 组织，复用 `docs/courses/2026-09-26/` 中的原始讲稿与练习，目录见 [docs/SUMMARY.md](docs/SUMMARY.md)。课程书包含两堂课、学员练习、讲师演示手册、整合路线，以及赛程和参赛基线附录；支持搜索、关系图和整书打印。
+
+已验证工具版本为 **mdbook 0.5.3**、**mdbook-mermaid 0.17.0**。已有命令时无需重装；新环境可安装固定版本：
+
+```sh
+cargo install mdbook --version 0.5.3 --locked
+cargo install mdbook-mermaid --version 0.17.0 --locked
+```
+
+在仓库根目录运行：
+
+```sh
+npm run course:dev     # http://127.0.0.1:3206，编辑 Markdown 后自动刷新
+npm run course:build   # 静态书籍输出到 book/
+```
+
+也可直接使用 `mdbook serve --hostname 127.0.0.1 --port 3206` 和 `mdbook build`。Markdown 是唯一内容源；增加章节时更新 `docs/SUMMARY.md`。Mermaid 的浏览器资源在 `book-theme/` 随仓库提供，阅读已构建课程书无需连接图表 CDN。使用顶栏打印按钮可打印整书或另存为 PDF。
+
+课程书当前独立构建和本地预览，尚未加入官网的自动发布包。`npm run build` 仍构建活动官网；课程书成功构建不代表已经上线，也不代表课程中的最新 GUI 演示已通过实机预演。
+
 ## Content and visual direction
 
 `src/App.vue` contains participant-facing copy, awards and optional contribution topics. `src/components/EventSchedule.vue` contains the dated competition and training calendars. The competition centers on OctoSense: entrants choose from the [12 official application scenarios](https://octosense.org/cn/#apps)—mail, messaging, calendar, weather, news, music, video, markets, navigation, shopping and logistics, writing and creation, and system and devices—and demonstrate a real task completed with Agent automation.

@@ -17,8 +17,8 @@ const stages = [
 
 const sessions = [
   { date: '09.22', time: '19:30–21:00', audience: '开营说明', title: '赛事与八个项目全景', description: '介绍 OctoSense 场景、robrix2 参赛基线、八个项目的分工与评奖规则。选手定义目标和判断结果，Agent 协助完成小程序；机制入门从 9/26 周六开始。' },
-  { date: '09.26', time: '10:00–12:00', audience: '机制入门', title: 'OctoSense × Makepad：让意图成为应用', description: '从 OctoSense 场景选择任务，在 robrix2 中体验文章编辑器的原生界面、授权与预览。理解应用宿主和 Makepad 的分工，学会向 Agent 描述目标、操作与完成标准。' },
-  { date: '09.26', time: '14:00–16:00', audience: '机制入门', title: 'octoscode × Octoscript：和 Agent 一起做应用', description: '用文章编辑器示例理解 Octoscript 如何表达界面与状态，以及宿主如何提供能力。通过 octoscode 向 Agent 描述改动、观察结果并反馈，区分内容编辑与应用扩展，不展开语法与源码。' },
+  { date: '09.26', time: '10:00–12:00', audience: '机制入门', title: 'OctoSense × Makepad：让意图成为应用', description: '以参会天气卡为例，理解 OctoSense、AppCard、Makepad 与 Octos 如何把意图变成可操作的应用。观察真实数据、状态与失败反馈，写出自己的任务和完成标准。' },
+  { date: '09.26', time: '14:00–16:00', audience: '机制入门', title: 'octoscode × Octoscript：和 Agent 一起做应用', description: '延续同一张卡片，用 octoscode 与 Agent 完成一次修改，理解 Octoscript 的界面、数据与交互机制。通过运行、反馈和复核改进作品，带走源码、截图与复现说明。' },
   { date: '09.27', time: '10:00–12:00', audience: '机制入门', title: 'octos × OctoLoop：执行与审查如何配合', description: '理解 octos 如何组织 Agent 的上下文、工具和任务执行，以及 OctoLoop 的内环执行、外环审查机制。通过派任务、看结果、退回改进和人工验收，学会管理 Agent 的工作。' },
   { date: '09.27', time: '14:00–15:30', audience: '机制入门', title: 'robrix2 × hagency：从分享小程序到协作交付', description: '演示小程序分享、接收者独立授权、草稿隔离与确认发送，再用 hagency 任务验收说明软件工厂协作。选手规划自己的小程序与 Agent 分工，区分内置示例和需要完成的服务接入。' },
   { date: '09.27', time: '16:00–17:00', audience: '可选工作坊', title: '把课程变成自己的参赛计划', description: '为自己的场景写出目标、Agent 分工、可用项目和完成标准。9/27 完成机制入门，9/28–10/4 留出一周制作初赛作品，不增加新的必修内容。' },
@@ -68,7 +68,7 @@ const sessions = [
         </div>
         <p class="calendar-note">{{ t('入门课在 9/27 结束，9/28–10/4 是完整的作品制作周。10/3 答疑与 10/4 提交检查均为可选支持，不增加新的必修内容。') }}</p>
         <p class="calendar-note">{{ t('初赛提交后即可继续完善同一作品，10/6 公布晋级名单，10/7 安排复赛工作坊。10/10–11 留给评审，10/12 举行线上决赛；决赛是比赛环节，不增加工作日晚课。') }}</p>
-        <p class="calendar-note">{{ t('课程以 robrix2 的小程序机制与原生文章编辑器为基线；锁定版本、支持设备和练习数据于 9/24 发布，9/25 完成异步自检。') }}</p>
+        <p class="calendar-note">{{ t('9/26 使用课前验证的 OctoSense / AppCard 环境与练习卡片，9/27 使用 robrix2 小程序示例；安装、账号配置与异步自检在课前完成。') }}</p>
       </div>
     </div>
     <div class="advancement-note">

@@ -16,7 +16,7 @@ const projects = [
 <template>
   <div class="training-approach">
     <h3>{{ t('看懂机制，让 Agent 帮你完成比赛。') }}</h3>
-    <p>{{ t('围绕八个项目，讲清它们为什么存在、如何工作，以及选手怎样与 Agent 配合。通过场景演示和作品练习建立理解，不展开源码、语法与底层实现。') }}</p>
+    <p>{{ t('围绕 OctoSense 应用生态，讲清各个项目为什么存在、如何工作，以及选手怎样与 Agent 配合。通过场景演示和作品练习建立理解，不展开源码、语法与底层实现。') }}</p>
     <div class="project-map">
       <article v-for="project in projects" :key="project.name">
         <h4><a :href="project.href" target="_blank" rel="noopener noreferrer">{{ project.name }} ↗</a></h4>
@@ -24,7 +24,7 @@ const projects = [
       </article>
     </div>
     <p class="learning-flow">{{ t('选一个场景 → 描述目标 → 让 Agent 制作与协作 → 运行并检查 → 反馈改进 → 提交作品。') }}</p>
-    <p class="availability-note">{{ t('以 robrix2 和原生文章编辑器为共同示例，按选题选择其他工具。课程讲机制与 Agent 协作，不要求每个作品同时接入八个项目。') }}</p>
+    <p class="availability-note">{{ t('9/26 两堂课共 4 小时，以 OctoSense、Octoscript-AppCard、octoscode、Octoscript 串起应用制作与运行；9/27 继续学习 OctoLoop、robrix2 与 hagency。') }}</p>
   </div>
 </template>
 
