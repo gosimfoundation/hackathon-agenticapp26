@@ -5,7 +5,7 @@ const { locale, t } = useLocale()
 const octosenseSite = computed(() => locale.value === 'en' ? 'https://octosense.org' : 'https://octosense.org/cn')
 const scenarios = [
   { slug: 'mail', title: '邮件', text: '从来信中识别安排与变化，提出日程更新和回复草稿，确认后执行。' },
-  { slug: 'messaging', title: '即时消息 · robrix2', text: '在 robrix2 的会话中分享小程序，让接收者独立授权、完成任务，并把结果带回聊天。' },
+  { slug: 'messaging', title: '即时消息 · Rinx', text: '在 Rinx 的会话中分享小程序，让接收者独立授权、完成任务，并把结果带回聊天。' },
   { slug: 'calendar', title: '日历', text: '发现时间冲突，提出替代安排，区分待确认与已落实的日程。' },
   { slug: 'weather', title: '天气', text: '结合天气、空气质量与活动计划，提出有来源、可确认的出行建议。' },
   { slug: 'news', title: '新闻', text: '围绕关注主题准备简报，保留来源与时间，让用户决定何时阅读或收听。' },
@@ -24,7 +24,7 @@ const scenarios = [
     <div class="section-heading wide">
       <p class="eyebrow">{{ t('02 / 场景选题') }}</p>
       <h2 id="scenarios-title">{{ t('从熟悉的应用，走向 Agent 自动化。') }}</h2>
-      <p>{{ t('以 OctoSense 为核心，从官方应用指南的 12 个场景中选题，以 robrix2 为主要宿主制作 Agentic 小程序。可以联动多个场景，统一参评。') }}</p>
+      <p>{{ t('以 OctoSense 为核心，从官方应用指南的 12 个场景中选题，以 Rinx 为主要宿主制作 Agentic 小程序。可以联动多个场景，统一参评。') }}</p>
       <a class="text-link" :href="`${octosenseSite}/#apps`" target="_blank" rel="noopener noreferrer">{{ t('查看 OctoSense 应用指南 ↗') }}</a>
     </div>
     <div class="scenario-grid">
@@ -33,17 +33,17 @@ const scenarios = [
         <h3>{{ t(scenario.title) }}</h3>
         <p>{{ t(scenario.text) }}</p>
         <a class="text-link" :href="`${octosenseSite}/apps/${scenario.slug}/`" target="_blank" rel="noopener noreferrer" :aria-label="t(scenario.title) + ' · ' + t('阅读场景指南')">{{ t('阅读场景指南') }} ↗</a>
-        <a v-if="scenario.slug === 'messaging'" class="text-link messaging-link" href="#messaging">{{ t('查看 robrix2 专题 ↓') }}</a>
+        <a v-if="scenario.slug === 'messaging'" class="text-link messaging-link" href="#messaging">{{ t('查看 Rinx 专题 ↓') }}</a>
       </article>
     </div>
     <p class="scenario-note">{{ t('这些是选题建议。官方指南包含概念体验与示例数据；参赛可用能力和运行环境以发布包及验证说明为准。') }}</p>
     <div id="messaging" class="messaging-brief">
       <div class="messaging-intro">
-        <p class="eyebrow">OCTOSENSE / ROBRIX2</p>
-        <h3>{{ t('以 robrix2 为起点，做能分享、能使用的小程序。') }}</h3>
-        <p>{{ t('本届主要使用 robrix2 小程序宿主，保留聊天、联系人与发现入口。已有网页卡片与原生 Octoscript 文章编辑器；原生编辑器可从“发现”或聊天“+”打开，并将应用分享到会话。') }}</p>
-        <a class="text-link" href="https://github.com/OctoSense-org/robrix2" target="_blank" rel="noopener noreferrer">{{ t('打开 robrix2 项目 ↗') }}</a>
-        <a class="text-link messaging-link" href="https://github.com/OctoSense-org/robrix2/blob/05daf9bdb05fafc6d8f04dcb312a35f1d46a661e/lab/article-editor/README.md" target="_blank" rel="noopener noreferrer">{{ t('查看原生小程序示例 ↗') }}</a>
+        <p class="eyebrow">OCTOSENSE / RINX</p>
+        <h3>{{ t('以 Rinx 为起点，做能分享、能使用的小程序。') }}</h3>
+        <p>{{ t('本届主要使用 Rinx 小程序宿主，保留聊天、联系人与发现入口。已有网页卡片与原生 Octoscript 文章编辑器；原生编辑器可从“发现”或聊天“+”打开，并将应用分享到会话。') }}</p>
+        <a class="text-link" href="https://github.com/hagency-org/Rinx" target="_blank" rel="noopener noreferrer">{{ t('打开 Rinx 项目 ↗') }}</a>
+        <a class="text-link messaging-link" href="https://github.com/hagency-org/Rinx/blob/05daf9bdb05fafc6d8f04dcb312a35f1d46a661e/lab/article-editor/README.md" target="_blank" rel="noopener noreferrer">{{ t('查看原生小程序示例 ↗') }}</a>
         <p class="readiness-note">{{ t('当前原生示例只接受内置文章编辑器；新增原生小程序需扩展并构建宿主，不能直接导入任意应用包。网页卡片可分享 HTTP(S) 地址，页面不会因此获得聊天记录或账号权限。') }}</p>
       </div>
       <div class="messaging-examples">
@@ -52,7 +52,7 @@ const scenarios = [
           <p>{{ t('打开应用 → 使用自己的账号授权 → 编辑 Markdown、保存本地草稿 → 原生预览 → 选择聊天并确认发送。接收者可打开分享的应用，草稿和权限各自独立。') }}</p>
         </article>
         <article id="factory-apps">
-          <h4>{{ t('扩展选题：robrix2 + hagency') }}</h4>
+          <h4>{{ t('扩展选题：Rinx + hagency') }}</h4>
           <p>{{ t('基于小程序分享与授权机制，为 hagency（原 hafleet）软件工厂开发任务进度、Agent 状态、结果验收或交接应用。由选手接入协作数据，并展示确认操作后的实际结果。') }}</p>
           <a class="text-link" href="https://github.com/hagency-org/hagency" target="_blank" rel="noopener noreferrer">{{ t('了解 hagency 项目 ↗') }}</a>
         </article>

@@ -18,4 +18,4 @@
 
 - [完整培训安排](curriculum.md)
 - [赛程与提交要求](competition-schedule.md)
-- [robrix2 小程序基线](robrix2-miniapps.md)
+- [Rinx 小程序基线](rinx-miniapps.md)
