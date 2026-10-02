@@ -104,14 +104,14 @@ const faqs = [
       <div class="hero-shade" aria-hidden="true"></div>
       <div class="hero-stage">
         <div class="hero-copy">
-          <p class="eyebrow"><a href="https://shenzhen2026.gosim.org/" target="_blank" rel="noopener noreferrer">GOSIM Shenzhen 2026</a> / AGENTIC APP</p>
+          <p class="eyebrow"><a href="https://shenzhen2026.gosim.org/" target="_blank" rel="noopener noreferrer">{{ t('GOSIM 深圳 2026') }}</a> / AGENTIC APP</p>
           <h1 id="event-title" v-if="locale === 'en'">The Intent<br>Is the <span>App.</span></h1><h1 id="event-title" v-else class="zh">意图，<br>即<span>应用。</span></h1>
           <div class="hero-details">
-            <h2>{{ t('Agentic App 黑客松') }}</h2>
+            <h2>{{ t('智能体应用 黑客松') }}</h2>
             <p class="hero-theme">{{ t('围绕 OctoSense，在 Rinx 中创造 Agent 能理解、能操作、能完成任务的小程序。') }}</p>
             <p class="hero-theme">{{ t('9.22 开营 · 10.12 线上决赛 · 10.17 现场展示与颁奖') }}</p>
             
-            <a class="location" href="https://shenzhen2026.gosim.org/" target="_blank" rel="noreferrer">{{ t('10.17 前三名现场展示与颁奖 · GOSIM Shenzhen 2026 ↗') }}</a>
+            <a class="location" href="https://shenzhen2026.gosim.org/" target="_blank" rel="noreferrer">{{ t('10.17 前三名现场展示与颁奖 · GOSIM 深圳 2026 ↗') }}</a>
             
             <div class="actions"><a class="button primary" href="#participate">{{ t('参赛信息') }}<span>↗</span></a><a class="text-link" href="#showcase">{{ t('查看实机 ↓') }}</a></div>
             <div class="hero-sponsors" :aria-label="t('赞助商')">
@@ -167,7 +167,7 @@ const faqs = [
     <EventSchedule />
     <section id="faq" class="section faq"><div class="section-heading"><p class="eyebrow">{{ t('08 / 常见问题') }}</p><h2>{{ t('参赛须知') }}</h2></div><div><details v-for="item in faqs" :key="item.q"><summary>{{ t(item.q) }}<span aria-hidden="true">+</span></summary><p><ConferenceText :text="t(item.a)" /></p></details></div></section>
 
-    <section id="participate" class="section participate"><p class="eyebrow">{{ t('09 / 参赛信息') }}</p><h2>{{ t('Agentic App 黑客松 2026') }}</h2><p><ConferenceText :text="t('2026 年 9 月 13 日开放报名组队，9 月 22 日开营，9 月 26 日起在周末与国庆假期集中上课。初赛海选晋级 50 人，50 人参加线上复赛并评出一、二、三等奖，10 月 12 日线上决赛并公布获奖结果。前三名将于 10 月 17 日到 GOSIM Shenzhen 2026 黑客松现场展示作品并参加颁奖。单人、多人均可参赛；队长和每位队员都须分别报名。')" /></p><RegistrationPanel /><p class="small">{{ t('Agentic App 是独立赛事，与智能体工厂、巡天智能体并行。') }}</p></section>
+    <section id="participate" class="section participate"><p class="eyebrow">{{ t('09 / 参赛信息') }}</p><h2>{{ t('智能体应用 黑客松 2026') }}</h2><p><ConferenceText :text="t('2026 年 9 月 13 日开放报名组队，9 月 22 日开营，9 月 26 日起在周末与国庆假期集中上课。初赛海选晋级 50 人，50 人参加线上复赛并评出一、二、三等奖，10 月 12 日线上决赛并公布获奖结果。前三名将于 10 月 17 日到 GOSIM Shenzhen 2026 黑客松现场展示作品并参加颁奖。单人、多人均可参赛；队长和每位队员都须分别报名。')" /></p><RegistrationPanel /><p class="small">{{ t('智能体应用 黑客松是独立赛事，与智能体软件工厂 黑客松、智能体巡天黑客松并行。') }}</p></section>
   </main>
-  <footer><a href="/">GOSIM / CREATE</a><span>{{ t('Agentic App 黑客松 · 2026') }}</span><a href="/">{{ t('查看全部黑客松 ↗') }}</a></footer>
+  <footer><a href="/">GOSIM / CREATE</a><span>{{ t('智能体应用 黑客松 · 2026') }}</span><a href="/">{{ t('查看全部黑客松 ↗') }}</a></footer>
 </template>

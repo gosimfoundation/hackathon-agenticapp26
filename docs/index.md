@@ -1,6 +1,6 @@
 # 从意图到应用
 
-Agentic App 黑客松开课课程 · 2026 年 9 月 26 日 · 共 4 小时
+智能体应用 黑客松开课课程 · 2026 年 9 月 26 日 · 共 4 小时
 
 和 Agent 一起，把一个真实需求做成可以操作、能够验证的应用。课程围绕 OctoSense、Octoscript-AppCard、octoscode 与 Octoscript，讲清项目机制与协作方法。
 
