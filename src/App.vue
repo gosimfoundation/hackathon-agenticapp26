@@ -14,6 +14,7 @@ import TierMascot from './components/TierMascot.vue'
 import AwardEvaluation from './components/AwardEvaluation.vue'
 import SponsorSupport from './components/SponsorSupport.vue'
 import AppHubSubmission from './components/AppHubSubmission.vue'
+import PrelimResults from './components/PrelimResults.vue'
 const menuOpen = ref(false)
 const octosenseSite = computed(() => locale.value === 'en' ? 'https://octosense.org' : 'https://octosense.org/cn')
 const base = import.meta.env.BASE_URL
@@ -55,7 +56,7 @@ onUnmounted(() => {
   disposed = true
   window.removeEventListener('scroll', updateScroll)
 })
-const nav = [['challenge', '参赛命题'], ['tracks', '场景选题'], ['showcase', '实机预览'], ['steps', '实现与提交'], ['awards', '奖项与评分'], ['bounties', '悬赏榜'], ['schedule', '赛程与培训']]
+const nav = [['results', '初赛入围'], ['challenge', '参赛命题'], ['tracks', '场景选题'], ['showcase', '实机预览'], ['steps', '实现与提交'], ['awards', '奖项与评分'], ['bounties', '悬赏榜'], ['schedule', '赛程与培训']]
 const bounties = [
   { title: 'hagency 软件工厂小程序', description: '围绕任务进度、Agent 状态、结果验收或协作交接提交 Rinx 小程序，附 hagency 接入说明和完整任务演示。', repo: 'Rinx + hagency' },
   { title: '小程序能力与契约测试', description: '为工厂小程序补充一个受限数据能力、状态回放或权限测试，并接回实际参赛应用。', repo: 'Rinx + hagency' },
@@ -126,6 +127,7 @@ const faqs = [
       </div>
       <div class="hero-bottom"><a class="org-link" href="#tracks">OCTOSENSE / APPCARD / RINX</a><span>{{ t('OctoSense 场景 · Agentic 应用 · 技术突破') }}</span><a href="#challenge">{{ t('探索赛事 ↓') }}</a></div>
     </section>
+    <PrelimResults />
     <section id="challenge" class="section challenge"><div class="section-heading"><p class="eyebrow">{{ t('01 / 参赛命题') }}</p><h2>{{ t('意图所至，') }}<br>{{ t('应用而生。') }}</h2><figure class="intent-detail"><HeroDetail region="design" :night="displayedNight" :alt="t('主视觉局部：创作者在绘图屏上绘制应用界面')" /></figure></div><div class="section-body"><p class="lead">{{ t('让 Agent 完成任务，应用为人保留控制。') }}</p><p>{{ t('本届大赛以 OctoSense 为核心，以 Rinx 小程序宿主为主要开发基线。围绕熟悉的聊天与小程序入口，让 Agent 读懂状态、执行操作、跟进变化，并让用户看清结果。') }}</p><p>{{ t('意图不一定来自你对 Agent 说的话。它可能藏在一封邮件、一条消息、一个时间点或一次状态变化里。比如买了一台空调：物流、预约安装、上门、付款、售后，Agent 读完邮件，把每一步整理成等你确认的卡片。') }} <a class="inline-link" :href="`${octosenseSite}/experience/aircon/`" target="_blank" rel="noopener noreferrer">{{ t('体验空调服务示例 ↗') }}</a></p><p>{{ t('面向设计师、产品人、OPC（一人公司）、学生与开发者。按 OctoSense 应用指南选择场景，在 Rinx 中制作小程序；即时消息沿用其会话界面，软件协作可以接入 hagency。') }}</p><p>{{ t('9 月 13 日开放报名与组队。可以单人参赛，也可以多人组队；队长和每位队员均须分别报名。') }}</p><div class="rule"><span>{{ t('共同交付') }}</span><strong>{{ t('跑通的演示 + 以 Apache 2.0 开源的代码') }}</strong><p>{{ t('以 Rinx 为主要基线，提交小程序及其可复现的宿主版本与启动说明。视频或设计稿不能代替可运行作品；平台和 ROM 扩展需展示对作品的实际改善。') }}</p><a class="inline-link" href="#submission">{{ t('查看提交材料与 Hub 预检 ↓') }}</a></div></div></section>
     <ApplicationScenarios />
     <ProjectShowcase :night="displayedNight" />
