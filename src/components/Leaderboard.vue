@@ -22,7 +22,7 @@ const ranked = computed(() => {
     return { ...e, rank: rank as number | null }
   })
 })
-const shown = computed(() => ranked.value.filter((e) => filter.value === 'all' || (filter.value === 'live' ? e.live : !!e.award)))
+const shown = computed(() => ranked.value.filter((e) => filter.value === 'all' || (filter.value === 'live' ? e.live : !!(e.award || e.special))))
 const liveCount = entries.filter((e) => e.live).length
 const lang = computed(() => (locale.value === 'en' ? 'en' : 'zh'))
 const hosts = 'OctoSense 0.1.0-rc.6, Rinx 1.3.0, OctoBuddy 0.3.2'
@@ -71,6 +71,7 @@ const rankLabel = (rank: number | null) => rank === null ? t('不参与排名') 
           <h3>{{ e.name[lang] }}</h3>
           <p class="lb-badges">
             <span v-if="e.award" class="badge award">{{ t(e.award) }}</span>
+            <span v-if="e.special" class="badge special">{{ t(e.special) }}</span>
             <span class="badge" :class="e.live ? 'live' : 'evidence'">{{ e.live ? t('实机复核') : t('按证据评审') }}</span>
             <span v-if="e.conflict" class="badge conflict">{{ t('评审方作品 · 不参评') }}</span>
           </p>
@@ -131,6 +132,7 @@ const rankLabel = (rank: number | null) => rank === null ? t('不参与排名') 
 .lb-badges { margin: 0 0 14px; display: flex; flex-wrap: wrap; gap: 6px; }
 .badge { font: 11px/1.7 var(--mono); padding: 0 9px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); }
 .badge.award { border-color: var(--accent); background: var(--accent); color: var(--paper); }
+.badge.special { border-color: var(--ink); background: var(--ink); color: var(--paper); }
 .badge.live { border-color: var(--accent); color: var(--accent); }
 .badge.conflict { border-style: dashed; }
 

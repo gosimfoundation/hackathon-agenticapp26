@@ -53,6 +53,13 @@ const tiers: { title: string; prize: string; winners: Shown[] }[] = [
     ],
   },
 ]
+// Single-dimension honours for entries outside the top six; one per entry.
+const specials: (Shown & { title: string; basis: string })[] = [
+  { ...withEntry({ issue: 177, by: 'SuperLeilei2026', reason: '把毕业择城做成「两城上同一站台、三幕对局」的决策实验：不给总相合分，只摆出证据、反例和未知；系统 Agent 只提一个能改变决定的关键问题。实机复核中，Agent 约 31 秒指出用户自设的「冬天太冷」红线在杭州尚未核实，并给出具体核验办法，确认后才写入核验清单。' }), title: '最佳创意奖', basis: 'creativity' },
+  { ...withEntry({ issue: 76, by: 'sansanyixyz331', reason: '生态贡献最扎实：三个已合并的 App Hub 工具链修复（Windows 路径与摘要、盖章前先读清单、card-host 显示拒绝原因），以及经过四轮评审的 L0 卡片契约检查器（App-Flow#151）。作品在官方 Rinx 上读取群聊、生成待确认卡片，确认后真正发回群里。' }), title: '最佳生态贡献奖', basis: 'tech' },
+  { ...withEntry({ issue: 103, by: 'Jasonsu22', reason: '面向大众的邮件秘书：数秒内给出总结与钓鱼检查，提出待办并在你同意后入库，AI 起草回信、发送前检查，最后交给宿主审阅页由你亲手批准。团队还修复了 macOS 上日历授权从不弹窗的宿主缺陷（OctoSense#499）。' }), title: '最佳社会价值奖', basis: 'social' },
+  { ...withEntry({ issue: 71, by: 'prettygirlisnotme', reason: '数据诚实与结果核验做得最严：预算调整和保存草稿各需宿主单独批准，写入后逐字段读回比对，条件一变旧提案即作废。实机复核中，Agent 明确说明「安静」这一偏好在目录里没有证据、不能声称，并列出带静音证据但超预算的型号供你取舍。' }), title: '最佳可靠性奖', basis: 'completeness' },
+]
 const short: Record<string, string> = { creativity: '创意', completeness: '完整度', tech: '技术', social: '社会价值', performance: '性能' }
 </script>
 
@@ -95,6 +102,24 @@ const short: Record<string, string> = { creativity: '创意', completeness: '完
             <p class="score-total"><span>{{ t('总分') }}</span><strong>{{ w.entry.total }}</strong></p>
             <dl class="dims">
               <div v-for="d in dimensions" :key="d.key"><dt>{{ t(short[d.key]) }}</dt><dd>{{ w.entry.scores[d.key] }}</dd></div>
+            </dl>
+          </div>
+          <p class="reason">{{ t(w.reason) }}</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="tier specials">
+      <p class="tier-heading"><span>{{ t('单项奖') }}</span><span>{{ t('表彰前六名之外、单项表现最突出的作品') }}</span></p>
+      <div class="tier-grid count-4">
+        <article v-for="w in specials" :key="w.issue" class="winner-card">
+          <p class="special-title">{{ t(w.title) }}</p>
+          <p class="winner-meta"><a :href="`${issues}/${w.issue}`" target="_blank" rel="noopener noreferrer">#{{ w.issue }}</a> · <a :href="w.entry.repo" target="_blank" rel="noopener noreferrer">{{ w.by }}</a></p>
+          <h4>{{ nameOf(w.entry) }}</h4>
+          <div class="score-block compact">
+            <p class="score-total"><span>{{ t('总分') }}</span><strong>{{ w.entry.total }}</strong></p>
+            <dl class="dims">
+              <div v-for="d in dimensions" :key="d.key" :class="{ hit: d.key === w.basis }"><dt>{{ t(short[d.key]) }}</dt><dd>{{ w.entry.scores[d.key] }}</dd></div>
             </dl>
           </div>
           <p class="reason">{{ t(w.reason) }}</p>
@@ -159,6 +184,9 @@ const short: Record<string, string> = { creativity: '创意', completeness: '完
 .tier-grid { display: grid; gap: 0 clamp(28px, 4vw, 56px); }
 .tier-grid.count-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .tier-grid.count-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tier-grid.count-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.special-title { margin: 0 0 6px; font-size: 18px; font-weight: 500; color: var(--accent); }
+.dims .hit dd { color: var(--accent); }
 .winner-card { padding: 28px 0 8px; min-width: 0; }
 .winner-card h4 { font: 500 clamp(24px, 2.6vw, 32px)/1.2 var(--serif); margin: 8px 0 10px; }
 .winner-card .reason { color: var(--muted); font-size: 15px; line-height: 1.85; margin: 0; }
@@ -175,10 +203,11 @@ const short: Record<string, string> = { creativity: '创意', completeness: '完
 
 @media (max-width: 1180px) {
   .tier-grid.count-3 { grid-template-columns: 1fr; }
+  .tier-grid.count-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .champion-body { grid-template-columns: 1fr; }
 }
 @media (max-width: 760px) {
-  .tier-grid.count-2 { grid-template-columns: 1fr; }
+  .tier-grid.count-2, .tier-grid.count-4 { grid-template-columns: 1fr; }
   .dims > div { padding: 2px 10px; }
   .award-method dl { grid-template-columns: 1fr; gap: 4px; }
   .award-method dd { margin-bottom: 12px; }

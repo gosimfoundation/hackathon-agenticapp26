@@ -13,6 +13,7 @@ export type Entry = {
   live: boolean
   conflict: boolean
   award?: string
+  special?: string
   scores: Record<Dimension, number>
   total: number
   why: { zh: Text; en: Text }
@@ -245,6 +246,7 @@ export const entries: Entry[] = [
   },
   {
     "n": 177,
+    "special": "最佳创意奖",
     "name": {
       "zh": "毕业第一站 城市配对",
       "en": "First Stop After Graduation"
@@ -280,6 +282,7 @@ export const entries: Entry[] = [
   },
   {
     "n": 103,
+    "special": "最佳社会价值奖",
     "name": {
       "zh": "AgentMail",
       "en": "AgentMail"
@@ -315,6 +318,7 @@ export const entries: Entry[] = [
   },
   {
     "n": 76,
+    "special": "最佳生态贡献奖",
     "name": {
       "zh": "拾意",
       "en": "Shiyi Pickup"
@@ -420,6 +424,7 @@ export const entries: Entry[] = [
   },
   {
     "n": 71,
+    "special": "最佳可靠性奖",
     "name": {
       "zh": "TraceShop 采购助手",
       "en": "TraceShop Purchasing Assistant"
