@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useLocale } from './useLocale'
 const { locale, t, toggleLocale } = useLocale()
 import ConferenceText from './components/ConferenceText.vue'
@@ -14,8 +14,27 @@ import TierMascot from './components/TierMascot.vue'
 import AwardEvaluation from './components/AwardEvaluation.vue'
 import SponsorSupport from './components/SponsorSupport.vue'
 import AppHubSubmission from './components/AppHubSubmission.vue'
+import AwardResults from './components/AwardResults.vue'
 import PrelimResults from './components/PrelimResults.vue'
+import Leaderboard from './components/Leaderboard.vue'
 const menuOpen = ref(false)
+// The leaderboard is its own page at #leaderboard; every other hash is a section of the main page.
+const LEADERBOARD = '#leaderboard'
+const page = ref<'home' | 'leaderboard'>(window.location.hash === LEADERBOARD ? 'leaderboard' : 'home')
+function followHash() {
+  const hash = window.location.hash
+  if (hash === LEADERBOARD) {
+    page.value = 'leaderboard'
+    window.scrollTo(0, 0)
+  } else if (page.value === 'leaderboard') {
+    page.value = 'home'
+    nextTick(() => {
+      const target = hash ? document.getElementById(decodeURIComponent(hash.slice(1))) : null
+      if (target) target.scrollIntoView()
+      else window.scrollTo(0, 0)
+    })
+  }
+}
 const octosenseSite = computed(() => locale.value === 'en' ? 'https://octosense.org' : 'https://octosense.org/cn')
 const base = import.meta.env.BASE_URL
 // Keep both photographs mounted so lighting can crossfade without a blank frame.
@@ -44,6 +63,7 @@ function toggleTheme() {
 }
 onMounted(async () => {
   window.addEventListener('scroll', updateScroll, { passive: true })
+  window.addEventListener('hashchange', followHash)
   await Promise.allSettled([dayImage, nightImage].map(async (src) => {
     const image = new Image()
     image.src = src
@@ -55,8 +75,9 @@ onMounted(async () => {
 onUnmounted(() => {
   disposed = true
   window.removeEventListener('scroll', updateScroll)
+  window.removeEventListener('hashchange', followHash)
 })
-const nav = [['results', '初赛入围'], ['challenge', '参赛命题'], ['tracks', '场景选题'], ['showcase', '实机预览'], ['steps', '实现与提交'], ['awards', '奖项与评分'], ['bounties', '悬赏榜'], ['schedule', '赛程与培训']]
+const nav = [['winners', '获奖名单'], ['leaderboard', '排行榜'], ['challenge', '参赛命题'], ['tracks', '场景选题'], ['showcase', '实机预览'], ['steps', '实现与提交'], ['awards', '奖项与评分'], ['bounties', '悬赏榜'], ['schedule', '赛程与培训']]
 const bounties = [
   { title: 'hagency 软件工厂小程序', description: '围绕任务进度、Agent 状态、结果验收或协作交接提交 Rinx 小程序，附 hagency 接入说明和完整任务演示。', repo: 'Rinx + hagency' },
   { title: '小程序能力与契约测试', description: '为工厂小程序补充一个受限数据能力、状态回放或权限测试，并接回实际参赛应用。', repo: 'Rinx + hagency' },
@@ -91,7 +112,7 @@ const faqs = [
 
 <template>
   <a class="skip-link" href="#main">{{ t('跳转到主要内容') }}</a>
-  <header class="header" :class="{ 'is-scrolled': scrolled, 'menu-is-open': menuOpen }">
+  <header class="header" :class="{ 'is-scrolled': scrolled || page === 'leaderboard', 'menu-is-open': menuOpen }">
     <div class="header-brand-group"><a class="brand" href="/" :aria-label="t('GOSIM Create 首页')"><span class="brand-logo" aria-hidden="true" :style="{ maskImage: `url(${base}gosim-logo.svg)`, WebkitMaskImage: `url(${base}gosim-logo.svg)` }"></span><span class="create-wordmark">Create</span></a><EventSwitcher /></div>
     <div class="header-controls"><button class="locale-toggle" type="button" :aria-label="locale === 'zh' ? 'Switch to English' : '切换到中文'" @click="toggleLocale">{{ locale === 'zh' ? 'EN' : '中文' }}</button><button class="theme-toggle" type="button" :aria-pressed="isNight" :aria-label="isNight ? t('切换到白天模式') : t('切换到夜晚模式')" :title="isNight ? t('切换到白天模式') : t('切换到夜晚模式')" :disabled="themeLoading" :aria-busy="themeLoading" @click="toggleTheme">
       <svg v-if="isNight" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
@@ -100,6 +121,8 @@ const faqs = [
     <nav id="navigation" :class="{ open: menuOpen }" :aria-label="t('主导航')"><a v-for="[id, label] in nav" :key="id" :href="`#${id}`" @click="menuOpen = false">{{ t(label) }}</a><a class="registration-status registration-mobile" href="#participate" @click="menuOpen = false">{{ t('报名参赛 ↗') }}</a></nav>
   </header>
   <main id="main">
+    <Leaderboard v-if="page === 'leaderboard'" />
+    <template v-else>
     <section class="hero" aria-labelledby="event-title">
       <HeroMedia :night="displayedNight" />
       <div class="hero-shade" aria-hidden="true"></div>
@@ -127,6 +150,7 @@ const faqs = [
       </div>
       <div class="hero-bottom"><a class="org-link" href="#tracks">OCTOSENSE / APPCARD / RINX</a><span>{{ t('OctoSense 场景 · Agentic 应用 · 技术突破') }}</span><a href="#challenge">{{ t('探索赛事 ↓') }}</a></div>
     </section>
+    <AwardResults />
     <PrelimResults />
     <section id="challenge" class="section challenge"><div class="section-heading"><p class="eyebrow">{{ t('01 / 参赛命题') }}</p><h2>{{ t('意图所至，') }}<br>{{ t('应用而生。') }}</h2><figure class="intent-detail"><HeroDetail region="design" :night="displayedNight" :alt="t('主视觉局部：创作者在绘图屏上绘制应用界面')" /></figure></div><div class="section-body"><p class="lead">{{ t('让 Agent 完成任务，应用为人保留控制。') }}</p><p>{{ t('本届大赛以 OctoSense 为核心，以 Rinx 小程序宿主为主要开发基线。围绕熟悉的聊天与小程序入口，让 Agent 读懂状态、执行操作、跟进变化，并让用户看清结果。') }}</p><p>{{ t('意图不一定来自你对 Agent 说的话。它可能藏在一封邮件、一条消息、一个时间点或一次状态变化里。比如买了一台空调：物流、预约安装、上门、付款、售后，Agent 读完邮件，把每一步整理成等你确认的卡片。') }} <a class="inline-link" :href="`${octosenseSite}/experience/aircon/`" target="_blank" rel="noopener noreferrer">{{ t('体验空调服务示例 ↗') }}</a></p><p>{{ t('面向设计师、产品人、OPC（一人公司）、学生与开发者。按 OctoSense 应用指南选择场景，在 Rinx 中制作小程序；即时消息沿用其会话界面，软件协作可以接入 hagency。') }}</p><p>{{ t('9 月 13 日开放报名与组队。可以单人参赛，也可以多人组队；队长和每位队员均须分别报名。') }}</p><div class="rule"><span>{{ t('共同交付') }}</span><strong>{{ t('跑通的演示 + 以 Apache 2.0 开源的代码') }}</strong><p>{{ t('以 Rinx 为主要基线，提交小程序及其可复现的宿主版本与启动说明。视频或设计稿不能代替可运行作品；平台和 ROM 扩展需展示对作品的实际改善。') }}</p><a class="inline-link" href="#submission">{{ t('查看提交材料与 Hub 预检 ↓') }}</a></div></div></section>
     <ApplicationScenarios />
@@ -170,6 +194,7 @@ const faqs = [
     <section id="faq" class="section faq"><div class="section-heading"><p class="eyebrow">{{ t('08 / 常见问题') }}</p><h2>{{ t('参赛须知') }}</h2></div><div><details v-for="item in faqs" :key="item.q"><summary>{{ t(item.q) }}<span aria-hidden="true">+</span></summary><p><ConferenceText :text="t(item.a)" /></p></details></div></section>
 
     <section id="participate" class="section participate"><p class="eyebrow">{{ t('09 / 参赛信息') }}</p><h2>{{ t('智能体应用 黑客松 2026') }}</h2><p><ConferenceText :text="t('2026 年 9 月 13 日开放报名组队，9 月 22 日开营，9 月 26 日起在周末与国庆假期集中上课。初赛海选晋级 50 人，50 人参加线上复赛并评出一、二、三等奖，10 月 12 日线上决赛并公布获奖结果。前三名将于 10 月 17 日到 GOSIM Shenzhen 2026 黑客松现场展示作品并参加颁奖。单人、多人均可参赛；队长和每位队员都须分别报名。')" /></p><RegistrationPanel /><p class="small">{{ t('智能体应用 黑客松是独立赛事，与智能体软件工厂 黑客松、智能体巡天黑客松并行。') }}</p></section>
+    </template>
   </main>
   <footer><a href="/">GOSIM / CREATE</a><span>{{ t('智能体应用 黑客松 · 2026') }}</span><a href="/">{{ t('查看全部黑客松 ↗') }}</a></footer>
 </template>
